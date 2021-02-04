@@ -1,11 +1,13 @@
 package com.afauria.pushsample
 
+import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.Toast
+import com.google.firebase.messaging.Constants
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
@@ -22,6 +24,20 @@ class FcmTestService : FirebaseMessagingService() {
     override fun onNewToken(p0: String) {
         super.onNewToken(p0)
         Log.d(TAG, "onNewToken: $p0")
+    }
+
+    override fun handleIntentOnMainThread(intent: Intent?): Boolean {
+        Log.e(TAG, "handleIntentOnMainThread before" + intent?.extras)
+        val key = Constants.MessageNotificationKeys.ENABLE_NOTIFICATION
+        val oldKey = Constants.MessageNotificationKeys.ENABLE_NOTIFICATION.replace(
+            Constants.MessageNotificationKeys.NOTIFICATION_PREFIX,
+            Constants.MessageNotificationKeys.NOTIFICATION_PREFIX_OLD
+        )
+        //intent.extras拿到的是拷贝过的Bundle，需要直接修改intent的extras
+//        intent?.extras?.remove(key)
+        intent?.removeExtra(key)
+        intent?.removeExtra(oldKey)
+        return super.handleIntentOnMainThread(intent)
     }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
