@@ -47,9 +47,10 @@ class FcmTestService : FirebaseMessagingService() {
         if (remoteMessage.data.isNotEmpty()) {
             Log.d(TAG, "Message data payload: " + remoteMessage.data)
         }
-
-        // Check if message contains a notification payload.
-        remoteMessage.notification?.let {
+        val intent = remoteMessage.toIntent()
+        val key = Constants.MessageNotificationKeys.ENABLE_NOTIFICATION
+        intent.putExtra(key, "1")
+        RemoteMessage(intent.extras).notification?.let {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.notification!!.body)
             Handler(Looper.getMainLooper()).post {
                 Toast(this).apply {
