@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Log.d(TAG, "onCreate, " + intent?.extras)
         //旧版本
 //        FirebaseInstanceId.getInstance().instanceId.addOnCompleteListener {
 //            Log.d(TAG, "get token: "+it.result?.token)
@@ -33,5 +34,18 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             startActivity(Intent(this, SecondActivity::class.java))
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "onResume, " + intent?.extras)
+    }
+
+    /**
+     * 打开通知栏，参数传递到intent中
+     */
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        Log.d(TAG, "onNewIntent, " + intent?.extras)
     }
 }
