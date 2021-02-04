@@ -1,11 +1,13 @@
 package com.afauria.pushsample
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.KeyListener
 import android.util.Log
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.messaging.FirebaseMessaging
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     companion object {
@@ -27,6 +29,9 @@ class MainActivity : AppCompatActivity() {
             Log.d(TAG, "token cancel")
         }.addOnCompleteListener {
             Log.d(TAG, "token complete, $it")
+        }
+        button.setOnClickListener {
+            startActivity(Intent(this, SecondActivity::class.java))
         }
     }
 }
