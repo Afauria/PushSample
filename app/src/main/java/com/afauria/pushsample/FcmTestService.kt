@@ -14,7 +14,7 @@ class FcmTestService : FirebaseMessagingService() {
         private const val TAG = "FcmTestService"
     }
 
-    override fun onNewToken(p0: String?) {
+    override fun onNewToken(p0: String) {
         super.onNewToken(p0)
         Log.d(TAG, "onNewToken: $p0")
     }

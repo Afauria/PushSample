@@ -15,8 +15,18 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        FirebaseInstanceId.getInstance().instanceId.addOnCompleteListener {
-            Log.d(TAG, "get token: "+it.result?.token)
+        //旧版本
+//        FirebaseInstanceId.getInstance().instanceId.addOnCompleteListener {
+//            Log.d(TAG, "get token: "+it.result?.token)
+//        }
+        FirebaseMessaging.getInstance().token.addOnSuccessListener {
+            Log.d(TAG, "token: $it")
+        }.addOnFailureListener {
+            Log.d(TAG, "token error, $it")
+        }.addOnCanceledListener {
+            Log.d(TAG, "token cancel")
+        }.addOnCompleteListener {
+            Log.d(TAG, "token complete, $it")
         }
     }
 }
