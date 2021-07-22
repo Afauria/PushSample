@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:35895896377:android:c623d1066b3491faf120e8",
         "android_client_info": {
-          "package_name": "com.cvte.tv.smarthome"
+          "package_name": "com.afauria.pushsample"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "35895896377-28hmitdcqm11d9fvk8e7fhl1l4psr4n2.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.cvte.tv.smarthome",
+            "package_name": "com.afauria.pushsample",
             "certificate_hash": "4ea1214787aa52bac9796a1c818b02272365e924"
           }
         },

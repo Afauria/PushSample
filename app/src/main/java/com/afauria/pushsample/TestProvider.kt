@@ -9,7 +9,6 @@ import com.google.firebase.FirebaseApp
 
 /**
  * Created by Afauria on 2021/1/27.
- * e-mail : zhangweiyue@cvte.com
  */
 class TestProvider : ContentProvider() {
 

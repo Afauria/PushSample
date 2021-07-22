@@ -14,7 +14,6 @@ import com.google.firebase.messaging.RemoteMessage
 
 /**
  * Created by Afauria on 2021/2/4.
- * e-mail : zhangweiyue@cvte.com
  */
 class FcmTestService : FirebaseMessagingService() {
     companion object {
